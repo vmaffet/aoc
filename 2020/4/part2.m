@@ -1,7 +1,7 @@
 data = fileread('input.txt');
 
-passports = split(data, compose('\n\n'));
-passports = replace(passports, compose('\n'), ' ');
+passports = split(data, compose({'\r\n\r\n', '\n\n', '\r\r'}));
+passports = replace(passports, compose({'\r\n', '\n', '\r'}), ' ');
 
 regexps = {'byr:(19[2-9]\d|200[0-2])\>', ...
            'iyr:20(1\d|20)\>', ...
