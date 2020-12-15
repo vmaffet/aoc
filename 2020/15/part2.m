@@ -9,11 +9,8 @@ for i = length(starting)+1:target-1
     
     tmp = seen(next+1);
     seen(next+1) = i;
-    if tmp == 0
-        next = 0;
-    else
-        next = i - tmp;
-    end
+    
+    next = (tmp ~= 0) * (i - tmp);
     
 end
 
