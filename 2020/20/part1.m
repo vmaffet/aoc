@@ -17,8 +17,9 @@ function [out_tile, out_trans] = part1
     img_trans = n_trans * ones(sqrt(n_tiles)); 
     
     img_idx = 1;
+    img_size = size(img_tile);
     while img_idx <= n_tiles
-        [row, col] = ind2sub(size(img_tile), img_idx);
+        [row, col] = ind2sub(img_size, img_idx);
         
         match = true;
         
