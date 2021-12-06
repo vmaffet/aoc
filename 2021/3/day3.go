@@ -51,23 +51,18 @@ func task2(arr []string) int {
 }
 
 func common(arr []string) []int {
-	n, m := len(arr), len(arr[0])
-	cnt := make([]int, m)
-
+	cnt := make([]int, len(arr[0]))
 	for _, s := range arr {
 		for i, c := range s {
 			if c == '1' {
 				cnt[i]++
+			} else {
+				cnt[i]--
 			}
 		}
 	}
 
-	cmmn := make([]int, m)
-	for i, x := range cnt {
-		cmmn[i] = 2*x - n
-	}
-
-	return cmmn
+	return cnt
 }
 
 type bitcriteria func(c int, b byte) bool
