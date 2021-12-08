@@ -30,16 +30,8 @@ func main() {
 		lines = append(lines, [2]point{{x1, y1}, {x2, y2}})
 	}
 
-	fmt.Println(task1(lines))
-	fmt.Println(task2(lines))
-}
-
-func task1(lines [][2]point) int {
-	return overlap(lines, false)
-}
-
-func task2(lines [][2]point) int {
-	return overlap(lines, true)
+	fmt.Println(overlap(lines, false))
+	fmt.Println(overlap(lines, true))
 }
 
 func overlap(lines [][2]point, diag bool) int {
@@ -70,14 +62,6 @@ func draw(start, end point) []point {
 	}
 	line = append(line, end)
 	return line
-}
-
-func minmax(a, b int) (int, int) {
-	if a < b {
-		return a, b
-	} else {
-		return b, a
-	}
 }
 
 func dir(a, b int) int {
