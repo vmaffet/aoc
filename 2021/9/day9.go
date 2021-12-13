@@ -63,13 +63,13 @@ func task2(heights map[point]int) int {
 }
 
 func fill(id map[point]bool, arr map[point]int, start point) int {
-	var cnt int
+	cnt := 0
 
 	id[start] = true
 	tovisit := []point{start}
-	for cnt = 0; len(tovisit) > 0; cnt++ {
-		cur := tovisit[0]
-		tovisit = tovisit[1:]
+	for last := 0; last >= 0; last = len(tovisit) - 1 {
+		cur := tovisit[last]
+		tovisit = tovisit[:last]
 
 		up := point{cur.x, cur.y - 1}
 		down := point{cur.x, cur.y + 1}
@@ -81,6 +81,8 @@ func fill(id map[point]bool, arr map[point]int, start point) int {
 				tovisit = append(tovisit, p)
 			}
 		}
+
+		cnt++
 	}
 
 	return cnt
