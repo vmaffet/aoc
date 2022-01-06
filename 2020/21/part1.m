@@ -13,19 +13,10 @@ for i = 1:length(allergens)
     pat = letterBoundary+allergens{i}+letterBoundary;
     in_food = contains(foods.allergens, pat);
 
-    candidates{i} = func_n(@intersect, foods.ingredients{in_food});
+    candidates{i} = fold(@intersect, foods.ingredients(in_food));
 end
 
-has_allergen = func_n(@union, candidates{:});
+has_allergen = fold(@union, candidates);
 non_allergen = strtrim(erase(all_ingredients, has_allergen));
 
 R = length(split(non_allergen))
-
-function set = func_n(func, varargin)
-    set = {};
-    if length(varargin) == 1
-        set = varargin{1};
-    elseif length(varargin) > 1
-        set = func(varargin{1}, func_n(func, varargin{2:end}));
-    end
-end
